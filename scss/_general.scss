@@ -1,0 +1,82 @@
+.mapboxgl-ctrl-geocoder {
+  min-width: 100%;
+}
+
+.app {
+  height: 100%;
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: $leftsidebar-collapsed;
+    @include respondbetween($md, $md-lg) {
+      left: 0;
+    }
+    @include respondbelow($xs-sm) {
+      left: 0;
+    }
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.5);
+    // transition: all 0.5s;
+  }
+
+  &.is-collapsed {
+    .navbar-container {
+      width: calc(100% - #{$leftsidebar-expanded});
+      left: $leftsidebar-expanded;
+    }
+    .left-sidebar {
+      width: $leftsidebar-expanded;
+    }
+    .page-container {
+      padding-left: $leftsidebar-expanded;
+      @include respondbelow($xl) {
+        padding-left: $leftsidebar-collapsed;
+      }
+      @include respondbetween($md, $md-lg) {
+        padding-left: 0;
+      }
+      @include respondbelow($xs-sm) {
+        padding-left: 0;
+      }
+    }
+    .page-loader {
+      left: $leftsidebar-expanded;
+      width: calc(100% - #{$leftsidebar-expanded});
+    }
+    .overlay {
+      left: $leftsidebar-expanded;
+    }
+  }
+
+  &.rightsidebar-open {
+    .right-sidebar {
+      // width: $rightsidebar-expanded;
+      right: 0;
+    }
+  }
+}
+
+.page-container {
+  height: 100%;
+  padding-left: $leftsidebar-collapsed;
+
+  @include respondbetween($md, $md-lg) {
+    padding-left: 0;
+  }
+  @include respondbelow($xs-sm) {
+    padding-left: 0;
+  }
+}
+
+.main-content {
+  padding: 8.5rem 2rem 0rem 2rem;
+  height: 100%;
+
+  @include respondbelow($xs-sm) {
+    padding: 8rem 1rem 0rem 1rem;
+  }
+}

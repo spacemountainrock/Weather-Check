@@ -1,0 +1,232 @@
+.summary,
+.uv-index,
+.wind {
+  .card {
+    &::before {
+      content: "";
+      top: 25%;
+      height: 50%;
+      left: 29%;
+      position: absolute;
+      border-left: 1px solid $color-separator;
+      @include respondbetween($lg, $xl) {
+        // left: 28%;
+      }
+    }
+  }
+}
+
+.card {
+  display: block;
+  padding: 1rem 1rem 0.5rem;
+  @include respondbetween($xl, $xxl) {
+    // padding: 1rem 0.5rem 0.5rem;
+  }
+  margin-bottom: 2rem;
+  background-color: $color-card;
+  border-radius: 0;
+  border: 1px solid #455a64;
+
+  .card-header-block {
+    padding: 0;
+    width: 25%;
+    float: left;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+
+    .title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: $color-dark-grey;
+      letter-spacing: 1px;
+    }
+
+    .icon {
+      font-size: 4rem;
+      padding: 2rem 0;
+      line-height: 1;
+      color: $color-icons;
+    }
+    .value {
+      font-size: 2.2rem;
+      line-height: 1;
+      color: $color-white;
+      font-weight: 500;
+    }
+  }
+
+  .card-details {
+    width: 65%;
+    float: left;
+    left: 10%;
+    position: relative;
+
+    .weather-parameter {
+      &-icon {
+        display: inline-block;
+        width: 3rem;
+        text-align: center;
+        vertical-align: super;
+        @include respondbetween($xl, $xxl) {
+          width: 2rem;
+        }
+        @include respondbetween($md, $md-lg) {
+          width: 2.4rem;
+        }
+
+        [class^="pe"],
+        .material-icons {
+          font-size: 1.6rem;
+          line-height: 2;
+          vertical-align: text-bottom;
+          color: $color-icons;
+        }
+
+        [class$="compass"] {
+          font-size: 1.4rem;
+        }
+      }
+      &-values {
+        display: inline-block;
+        padding: 1rem;
+        line-height: 2;
+        span {
+          display: block;
+        }
+        .text {
+          font-size: 1.1rem;
+          font-weight: 400;
+          color: $color-dark-grey;
+          letter-spacing: 1px;
+        }
+        .value {
+          font-size: 1.2rem;
+          color: $color-grey;
+        }
+      }
+    }
+  }
+}
+
+.summary {
+  .card {
+    display: flex;
+    flex-direction: row;
+  }
+  .card-header-block {
+    // transform: translateY(40%);
+    align-self: center;
+
+    .title {
+      font-size: 1.2rem;
+      max-width: 10rem;
+      margin: 0 auto;
+      color: $color-grey;
+    }
+    .icon {
+      font-size: 5rem;
+    }
+    .value {
+      font-size: 3rem;
+      position: relative;
+      sup {
+        position: absolute;
+        top: 0.6rem;
+      }
+    }
+  }
+}
+
+.uv-index {
+  .card {
+    min-height: 16rem;
+    .card-header-block {
+      padding: 1.4rem 0;
+    }
+    .card-details {
+      position: relative;
+      top: 2.6rem;
+      width: 60%;
+
+      @include respondbetween($md, $md-lg) {
+        width: 55%;
+        top: 1.6rem;
+      }
+
+      .description {
+        font-family: lato;
+        color: $color-red;
+        font-size: 1.2rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-bottom: 2rem;
+        line-height: 3;
+      }
+
+      .text {
+        color: $color-grey;
+        font-size: 1.1rem;
+        font-weight: 400;
+        letter-spacing: 1px;
+        margin: 0;
+      }
+    }
+  }
+}
+
+.wind {
+  .card {
+    .card-header-block {
+      transform: translateY(25%);
+      .pe-is-w-wind-turbine {
+        line-height: 0;
+      }
+    }
+  }
+}
+
+.other-params {
+  .card {
+    position: relative;
+    text-align: center;
+    padding: 1rem;
+    padding-top: 1.5rem;
+    font-size: 1.2rem;
+    min-height: 19rem;
+
+    @include respondbetween($xl, $xxl) {
+      font-size: 1.1rem;
+    }
+
+    .description {
+      color: $color-dark-grey;
+      letter-spacing: 1px;
+    }
+    .icon {
+      .material-icons,
+      [class^="pe"] {
+        font-size: 4rem;
+        line-height: 2.5;
+        color: $color-icons;
+      }
+    }
+    .value {
+      font-size: 2.4rem;
+      font-weight: 500;
+      position: absolute;
+      width: 100%;
+      bottom: 1rem;
+      right: 0;
+      left: 0;
+      color: $color-grey;
+      @include respondbetween($xl, $xxl) {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+.fa.fa-map-marker {
+  margin-right: 1rem;
+}

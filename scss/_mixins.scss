@@ -1,0 +1,38 @@
+@mixin clearfix {
+  &::before,
+  &::after {
+    content: " ";
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+@mixin transform($transform) {
+  -moz-transform: $transform;
+  -ms-transform: $transform;
+  -o-transform: $transform;
+  -webkit-transform: $transform;
+  transform: $transform;
+}
+
+@mixin transition($transition) {
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  -webkit-transition: $transition;
+  transition: $transition;
+}
+
+@mixin respondbetween($breakpoint1, $breakpoint2) {
+  @media (min-width: $breakpoint1) and (max-width: $breakpoint2) {
+    @content;
+  }
+}
+
+@mixin respondbelow($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}

@@ -1,0 +1,63 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  user-select: none;
+  transition: all 0.2s ease-in-out;
+}
+
+html {
+  font-size: 62.5%;
+  @include respondbetween($md, $lg) {
+    font-size: 56.25%;
+  }
+  @include respondbelow($sm) {
+    font-size: 56.25%;
+  }
+  @include respondbelow($xs-sm-1) {
+    font-size: 50%;
+  }
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: $color-background;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+button,
+input,
+select,
+a {
+  outline: none;
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:visited {
+    text-decoration: none !important;
+    outline: none;
+  }
+}
+
+ul {
+  margin: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}

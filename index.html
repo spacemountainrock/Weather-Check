@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Weather Check</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="css/weather-icons.min.css" />
+    <link rel="stylesheet" href="css/weather-icons-wind.min.css" />
+    <link rel="stylesheet" href="pe-icon-set-weather/css/pe-icon-set-weather.min.css" />
+    <link rel="stylesheet" href="pe-icon-set-weather/css/helper.min.css" />
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/font-awesome.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="css/Chart.min.css" />
+    <link rel="stylesheet" href="./fonts/iconfont/material-icons.css" />
+    <link href="css/waves.min.css" rel="stylesheet" />
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <style>
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="app">
+      <div class="page-loader">
+        <div class="loader">
+          <div class="preloader">
+            <div class="spinner">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div>
+              <div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+          <p>Loading...</p>
+        </div>
+      </div>
+      <div id="overlay"></div>
+      <!-- Left Sidebar -->
+      <div class="left-sidebar">
+        <div class="left-sidebar_content">
+          <!-- Sidebar Logo -->
+          <div class="left-sidebar_header">
+            <a class="left-sidebar_logo" href="javascript:void(0);">
+              <div class="logo">
+                <img src="images/logo1.svg" alt="logo" />
+              </div>
+              <div class="link">
+                <h5>FORECAST</h5>
+              </div>
+            </a>
+          </div>
+          <!-- End Sidebar Logo -->
+          <!-- Menu Items -->
+          <ul class="left-sidebar_menu">
+            <li class="navitem active">
+              <a href="#dashboard" class="left-sidebar_item">
+                <span class="icon-container">
+                  <i class="material-icons">dashboard</i>
+                </span>
+                <span class="title">Dashboard</span>
+              </a>
+            </li>
+            <li class="navitem">
+              <a href="#charts" class="left-sidebar_item">
+                <span class="icon-container">
+                  <i class="material-icons">donut_small</i>
+                </span>
+                <span class="title">Charts</span>
+              </a>
+            </li>
+            <li class="navitem">
+              <a href="#weekly" class="left-sidebar_item">
+                <span class="icon-container">
+                  <i class="material-icons">event</i>
+                </span>
+                <span class="title">Weekly</span>
+              </a>
+            </li>
+            <li class="navitem">
+              <a href="#windymap" class="left-sidebar_item">
+                <span class="icon-container">
+                  <i class="material-icons">map</i>
+                </span>
+                <span class="title">Map</span>
+              </a>
+            </li>
+          </ul>
+          <!-- End Menu Items -->
+        </div>
+      </div>
+      <!-- End Left Sidebar -->
+      <!-- Navbar -->
+      <div class="navbar-container navbar">
+        <div class="navbar-contents">
+          <ul class="nav-left">
+            <li>
+              <a href="javascript:void(0);" class="sidebar-toggle" id="sidebar-toggle">
+                <i class="material-icons">sort</i>
+              </a>
+            </li>
+          </ul>
+
+          <ul class="nav-right">
+            <li>
+              <a href="javascript:void(0);" class="settings-toggle">
+                <i class="material-icons">settings</i>
+              </a>
+            </li>
+          </ul>
+          <div class="location-header">
+            <h5></h5>
+          </div>
+        </div>
+      </div>
+      <!-- End Navbar -->
+      <!-- Page Container -->
+      <div class="page-container">
+        <!-- Main Content -->
+        <main class="main-content"></main>
+        <!-- End Main Content -->
+      </div>
+
+      <!-- End Page Container -->
+      <!-- Right Sidebar -->
+      <div class="right-sidebar">
+        <div class="right-sidebar_content">
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation"><a href="#units" class="active" data-toggle="tab">UNITS</a></li>
+            <li role="presentation"><a href="#location" data-toggle="tab">LOCATION</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade active show" id="units">
+              <div class="form-group">
+                <p>
+                  <b>Temperature</b>
+                </p>
+                <select class="selectpicker show-tick">
+                  <option>&deg;C</option>
+                  <option>&deg;F</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <p>
+                  <b>Wind Speed</b>
+                </p>
+                <select class="selectpicker show-tick">
+                  <option>Knots</option>
+                  <option>m/s</option>
+                  <option>mph</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <p>
+                  <b>Visibility</b>
+                </p>
+                <select class="selectpicker show-tick">
+                  <option>Kilometers</option>
+                  <option>Miles</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <p>
+                  <b>Precipitation</b>
+                </p>
+                <select class="selectpicker show-tick">
+                  <option>mm/h</option>
+                  <option>inph</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <p>
+                  <b>Pressure</b>
+                </p>
+                <select class="selectpicker show-tick">
+                  <option>hPa</option>
+                  <option>millibar</option>
+                  <option>Torr</option>
+                </select>
+              </div>
+              <div class="update-button">
+                <button type="button" class="btn btn-primary waves-effect waves-cyan" id="updateButton" disabled>
+                  <i class="material-icons">autorenew</i>
+                  <span class="icon-name">UPDATE SETTINGS</span>
+                </button>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="location">
+              <div>
+                <select class="show-tick show" data-live-search="true" data-size="auto"
+                  >My Location</select
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Right Sidebar -->
+    </div>
+
+    <script src="./plugins/jquery-3.4.1.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./plugins/jquery.nicescroll.min.js"></script>
+    <script src="./plugins/bootstrap-select.min.js"></script>
+    <script src="js/Chart.bundle.min.js"></script>
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js"></script>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script src="https://api4.windy.com/assets/libBoot.js"></script>
+    <script src="./plugins/waves.min.js"></script>
+    <script src="./node_modules/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>

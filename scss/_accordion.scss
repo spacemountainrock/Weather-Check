@@ -1,0 +1,210 @@
+#weekly-accordion {
+  margin-bottom: 2rem;
+  .card {
+    margin: 0;
+    padding: 0;
+
+    .card-header {
+      padding: 0;
+
+      button {
+        display: flex;
+        align-items: stretch;
+
+        width: 100%;
+        text-align: left;
+        padding: 0;
+        border: none;
+
+        .daily-card-header {
+          display: flex;
+          flex: 2;
+          height: 6.6rem;
+          justify-content: center;
+          color: $color-grey;
+          letter-spacing: 1px;
+          font-size: 1rem;
+
+          .date-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            padding: 0.4rem 0 0 0;
+          }
+          .title {
+            color: $color-dark-grey;
+          }
+
+          .date {
+            span {
+              line-height: 2;
+            }
+          }
+        }
+        .daily-card-body {
+          border-left: 1px solid $color-separator;
+          display: flex;
+          flex: 10;
+
+          .daily-card-details {
+            display: flex;
+            flex: 2;
+            align-items: center;
+            line-height: 1;
+
+            .icon {
+              text-align: center;
+              font-size: 3.2rem;
+              flex: 2;
+              color: $color-icons;
+              @include respondbetween($xl, $xxl) {
+                flex: 1;
+              }
+
+              i {
+                vertical-align: middle;
+              }
+            }
+            .degree {
+              font-weight: 700;
+              flex: 1;
+              text-align: center;
+              font-size: 2.4rem;
+              color: $color-grey;
+              padding-top: 0.4rem;
+              @include respondbetween($xl, $xxl) {
+                // font-size: 2.2rem;
+                padding-right: 0.8rem;
+              }
+            }
+          }
+          .values {
+            display: flex;
+            flex: 3;
+            align-items: stretch;
+            justify-content: space-evenly;
+            @include respondbetween($xl, $xxl) {
+              flex: 2;
+            }
+
+            .parameter-container {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              padding: 0.4rem 0 0 0;
+            }
+            .weather-parameter {
+              width: 7rem;
+              margin: 0 auto;
+
+              .weather-parameter-icon {
+                display: inline-block;
+                color: $color-icons;
+                width: 4rem;
+                text-align: center;
+                vertical-align: middle;
+
+                @include respondbetween($xl, $xxl) {
+                  width: 3rem;
+                }
+
+                .material-icons {
+                  font-size: 1.4rem;
+                  vertical-align: text-bottom;
+                  &.pointer {
+                    font-size: 2rem;
+                    vertical-align: bottom;
+                  }
+                }
+                [class*="sun"] {
+                  font-size: 1.4rem;
+                }
+                [class*="sunset"] {
+                  vertical-align: sub;
+                }
+                .pe-is-w-full-moon-3 {
+                  // vertical-align: text-top;
+                }
+              }
+              .weather-parameter-values {
+                display: inline-block;
+                color: $color-grey;
+                font-size: 1.1rem;
+                // .time {
+                //   font-size: 1.2rem;
+                // }
+              }
+            }
+          }
+        }
+      }
+    }
+    .card-body {
+      padding: 1rem 1rem 2rem 1rem;
+      width: 100%;
+      text-align: center;
+      &-title {
+        font-size: 1rem;
+        color: $color-grey;
+        letter-spacing: 1px;
+        width: 100%;
+        padding: 1rem 0 2rem 0;
+        text-align: left;
+        display: inline-block;
+      }
+      &-values {
+        .weather-parameter {
+          margin: 0 auto;
+          width: 10rem;
+          height: 3rem;
+          &:first-child {
+            margin-bottom: 2rem;
+          }
+
+          &-icon {
+            display: inline-block;
+            width: 4rem;
+            text-align: center;
+            vertical-align: super;
+
+            [class^="pe"],
+            .material-icons {
+              font-size: 1.4rem;
+              line-height: 2;
+              vertical-align: bottom;
+              color: $color-icons;
+            }
+
+            [class$="compass"] {
+              font-size: 1.4rem;
+            }
+          }
+          &-values {
+            text-align: left;
+            display: inline-block;
+            width: 5rem;
+
+            line-height: 2;
+            span {
+              display: block;
+            }
+            .text {
+              // display: none;
+              font-size: 0.9rem;
+              font-weight: 400;
+              color: $color-dark-grey;
+              letter-spacing: 1px;
+            }
+            .value {
+              font-size: 1rem;
+              color: $color-grey;
+            }
+          }
+        }
+      }
+    }
+    .show {
+      border-bottom: 1px solid;
+    }
+  }
+}

@@ -1,0 +1,81 @@
+.navbar-container {
+  position: fixed;
+  width: calc(100% - #{$leftsidebar-collapsed});
+  left: $leftsidebar-collapsed;
+  top: 0;
+  background-color: $color-navbar;
+  padding: 0;
+  margin: 0;
+  z-index: 100;
+
+  @include respondbetween($md, $md-lg) {
+    width: 100%;
+    left: 0;
+  }
+
+  @include respondbelow($xs-sm) {
+    width: 100%;
+    left: 0;
+  }
+
+  .navbar-contents {
+    height: $topbar-height;
+    padding: 2rem;
+    width: 100%;
+    border-bottom: 1px solid #212121;
+    text-align: center;
+
+    .nav-left,
+    .nav-right {
+      position: relative;
+      line-height: 0;
+      z-index: 100;
+
+      > li {
+        a {
+          display: block;
+          color: $color-navitems;
+
+          .material-icons {
+            font-size: 2.2rem;
+          }
+        }
+      }
+    }
+
+    .nav-left {
+      float: left;
+    }
+
+    .nav-right {
+      float: right;
+
+      > li {
+        a {
+          .material-icons {
+            font-size: 2.1rem;
+          }
+        }
+      }
+    }
+
+    .location-header {
+      position: relative;
+      top: 0.4rem;
+      padding: 0 6rem;
+
+      h5 {
+        font-family: sans-serif;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 1.2rem;
+        color: $color-grey;
+        margin: 0 auto;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+  }
+}
