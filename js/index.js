@@ -2002,9 +2002,9 @@ $(function() {
             app.variables.myLocation = app.geocoder.variables.geocodedList[0].text;
             app.init(coords);
             app.settings.init();
-            app.charts.init();
             app.geocoder.init();
             app.ui.init();
+            app.charts.init();
           });
         });
       })
