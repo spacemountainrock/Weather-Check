@@ -12,7 +12,6 @@ app.listen(3000, () => {
   console.log("listening at 3000");
 });
 
-console.log(process.env);
 
 app.post("/api", (req, resp) => {
   fetch(
