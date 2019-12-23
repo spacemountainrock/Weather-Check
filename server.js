@@ -8,10 +8,12 @@ app.use(express.json({ limit: "1mb" }));
 const darkskyKey = process.env.DARK_SKY_KEY;
 const mapboxKey = process.env.MAP_BOX_KEY;
 const windyKey = process.env.WINDY_KEY;
-app.listen(3000, () => {
-  console.log("listening at 3000");
-});
 
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log(`listening at ${port}`);
+});
 
 app.post("/api", (req, resp) => {
   fetch(
